@@ -10,13 +10,17 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["POST"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Load the telemetry data
 with open("telemetry.json", "r") as f:
     telemetry_data = json.load(f)
+
+@app.get("/")
+async def health_check():
+    return {"status": "Vercel is live", "user": "23f3003227"}
 
 @app.post("/")
 async def get_analytics(regions: List[str] = Body(..., embed=True), threshold_ms: int = Body(..., embed=True)):
