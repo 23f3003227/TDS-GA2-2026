@@ -1,0 +1,16 @@
+{
+    "name": "ga2-273415",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "astral-sh.uv",
+                "ms-python.python"
+            ]
+        }
+    },
+    "postCreateCommand": "uv pip install fastapi"
+}
